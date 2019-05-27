@@ -38,6 +38,7 @@ class SocialiteController extends Controller
     public function wxCallback()
     {
         $user = Socialite::driver('github')->user();
+        //判断这个用户是否存在，不存在则创建一个
         $data = User::firstOrCreate([
             'wx_id'=>$user->id,
         ],[
